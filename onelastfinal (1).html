@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌙 Sleeper Cells - The Ultimate Subconscious Experience</title>
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --card-bg: #121212;
+            --primary-glow: #bb86fc;
+            --secondary-glow: #03dac6;
+            --text-main: #e0e0e0;
+            --accent-red: #cf6679;
+            --platinum-gold: #d4af37;
+        }
+
+        * { box-sizing: border-box; }
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1b112e 0%, #050505 80%);
+            z-index: -1;
+        }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+        header { text-align: center; padding: 60px 0; border-bottom: 2px solid var(--primary-glow); }
+        h1 { font-size: clamp(2.5em, 8vw, 4em); color: var(--primary-glow); text-shadow: 0 0 20px var(--primary-glow); margin: 0; }
+        h2 { font-size: 2em; color: var(--secondary-glow); border-left: 5px solid var(--secondary-glow); padding-left: 15px; margin-top: 50px; }
+        
+        .main-tagline {
+            font-size: 1.5em;
+            color: #fff;
+            text-align: center;
+            margin: 20px 0;
+            font-weight: bold;
+            text-shadow: 0 0 10px var(--secondary-glow);
+        }
+
+        /* --- ALERT BOXES --- */
+        .alert-red {
+            background: rgba(207, 102, 121, 0.2);
+            border: 2px solid var(--accent-red);
+            color: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--accent-red);
+        }
+
+        .alert-gold {
+            background: rgba(212, 175, 55, 0.15);
+            border: 2px solid var(--platinum-gold);
+            color: var(--platinum-gold);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 0 15px var(--platinum-gold);
+        }
+
+        .creative-tagline {
+            background: #1a1a1a;
+            border-left: 5px solid var(--secondary-glow);
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .tanglish-highlight {
+            background: rgba(207, 102, 121, 0.1);
+            border: 1px solid var(--accent-red);
+            padding: 10px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 5px 0;
+            color: #ffb4b4;
+        }
+
+        /* --- DASHBOARD SECTIONS --- */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .pei-counter-card {
+            background: #1a0000;
+            border: 2px solid var(--accent-red);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .counter-val { font-size: 3.5em; font-weight: bold; color: var(--accent-red); font-family: monospace; }
+        
+        .pei-map-card {
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .map-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .city-dot {
+            background: #222;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            text-align: center;
+            border-bottom: 2px solid var(--secondary-glow);
+        }
+
+        .city-dot.hot { border-bottom-color: var(--accent-red); color: var(--accent-red); }
+
+        /* --- DREAM GENERATOR --- */
+        .dream-tool {
+            background: #1a1a1a;
+            border: 2px solid var(--secondary-glow);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 50px 0;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(3, 218, 198, 0.2);
+        }
+
+        .tool-controls { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin: 20px 0; }
+        select, .action-btn, input, textarea { padding: 12px 25px; border-radius: 30px; border: none; font-weight: bold; cursor: pointer; font-family: inherit; }
+        select, input, textarea { background: #333; color: white; border: 1px solid var(--secondary-glow); }
+        .action-btn { background: var(--secondary-glow); color: #000; transition: 0.3s; }
+        .action-btn:hover { transform: scale(1.05); box-shadow: 0 0 15px var(--secondary-glow); }
+        
+        /* --- WAITLIST FORM --- */
+        .waitlist-section {
+            background: var(--card-bg);
+            border: 1px solid #444;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 50px 0;
+        }
+
+        .form-group { margin-bottom: 20px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 8px; color: var(--secondary-glow); }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; border-radius: 10px; }
+
+        /* --- REVIEWS --- */
+        .review-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 30px 0; }
+        .review-card { background: #181818; padding: 20px; border-radius: 15px; border-bottom: 3px solid var(--secondary-glow); font-style: italic; }
+        .stars { color: #f1c40f; font-size: 1.2em; }
+
+        @media (max-width: 768px) {
+            .dashboard-grid { grid-template-columns: 1fr; }
+            .review-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>🌙 Sleeper Cells 🛌</h1>
+        <p>The Ultimate Sleep-as-a-Service (SaaS)</p>
+        <p class="main-tagline">📢 Don't just sleep. Direct your life while you're offline! 📢</p>
+        <div class="alert-red">
+            Thoongu. Kanavu kanu. Pei kanavu la irundhu escape aagu. Nalla thookam vazhkai ku romba mukkiyam
+        </div>
+    </header>
+
+    <section>
+        <h2>🛡️ Dream Catchers Subconscious Z+Security</h2>
+        <div class="dashboard-grid">
+            <div class="pei-counter-card">
+                <p>LIVE PEI INTERCEPTIONS</p>
+                <div class="counter-val" id="p-counter">14,208</div>
+                <p><small>Neutralized across South India</small></p>
+            </div>
+            <div class="pei-map-card">
+                <p><strong>📍 Live Subconscious Map (South India)</strong></p>
+                <div class="map-grid">
+                    <div class="city-dot hot">Chennai</div>
+                    <div class="city-dot">Bangalore</div>
+                    <div class="city-dot hot">Madurai</div>
+                    <div class="city-dot">Hyderabad</div>
+                    <div class="city-dot">Coimbatore</div>
+                    <div class="city-dot hot">Kochi</div>
+                    <div class="city-dot">Trichy</div>
+                    <div class="city-dot">Mysore</div>
+                    <div class="city-dot">Pondicherry</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="dream-tool">
+        <h2>🎬 Subconscious Dream Generator</h2>
+        <p>Select your scenario and energy casting to begin stimulation.</p>
+        <div class="tool-controls">
+            <select id="genre">
+                <option value="Empty Highway Bike Ride">Empty Highway Bike Ride</option>
+                <option value="Thalapathy Vijay Intro">Thalapathy Vijay Intro</option>
+                <option value="Oru nal CM">Oru nal CM</option>
+                <option value="Aquaman">Aquaman</option>
+                <option value="Life as Spiderman">Life as Spiderman</option>
+                <option value="Korean Duet">Korean Duet</option>
+                <option value="Man vs Wild">Man vs Wild</option>
+            </select>
+            <select id="casting">
+                <option value="Main Character Energy">Main Character Energy</option>
+                <option value="Vecna">Vecna Energy</option>
+                <option value="Max">Max Energy</option>
+                <option value="Steve">Steve Energy</option>
+                <option value="Jonathan">Jonathan Energy</option>
+                <option value="Level 3 Cuteness">Level 3 Cuteness</option>
+            </select>
+            <button class="action-btn" onclick="generateDream()">INJECT DREAM</button>
+        </div>
+        <div class="progress-box" id="p-box"><div class="progress-bar" id="p-bar"></div></div>
+        <div id="status-text">Ready for Subconscious Sync...</div>
+    </section>
+
+    <section>
+        <h2>📽️ The Problem (The 3 AM Crisis)</h2>
+        <ul>
+            <li><strong>The Struggle:</strong> 90% of people spend 1 hour overthinking before sleeping.</li>
+            <li><strong>The Trauma:</strong> Random dreams where you’re writing a board exam without a pen.</li>
+            <li><strong>The Horror:</strong> Mid-night bathroom breaks that "Reset" your good dreams.</li>
+            <li><strong>The Reality:</strong> <span class="tanglish-highlight">"Enchi uccha poitu vandha dream cut aayidudhu bro!"</span></li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🚀 The Solution (Sleep-as-a-Service)</h2>
+        <p>We provide a <strong>Subconscious Operating System</strong> that gives users full control over their REM cycle.</p>
+        <ul>
+            <li><strong>Instant Boot:</strong> Go from "Phone Scrolling" to "Deep Sleep" in &lt; 1 second.</li>
+            <li><strong>Dream Resume:</strong> The "Vitta Edathula Play" frame to frame technology.</li>
+            <li><strong>Advanced Pei-Shield:</strong> Enterprise-grade Z+Security for your nightmares.</li>
+        </ul>
+    </section>
+
+    <div class="alert-gold">
+        ✨ Dream Casting: Upload movie clips or character "vibes." Result: You are the Hero. Villain respects you. Gravity is optional. ✨
+    </div>
+
+    <h2>📑 Sleep Subscription Plans</h2>
+    <div class="plan-grid" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        <div class="plan-card" style="border: 1px solid #444; padding: 20px; border-radius: 15px; width: 220px; text-align: center;">
+            <h3>💤 FREE</h3>
+            <p>(Trial of Fear)</p>
+        </div>
+        <div class="plan-card" style="border: 1px solid #444; padding: 20px; border-radius: 15px; width: 220px; text-align: center;">
+            <h3>😴 BASIC</h3>
+            <p>(Adult Mode)</p>
+        </div>
+        <div class="plan-card" style="border: 1px solid #444; padding: 20px; border-radius: 15px; width: 220px; text-align: center;">
+            <h3>🌌 PLUS</h3>
+            <p>(Director)</p>
+        </div>
+        <div class="plan-card" style="border: 2px solid var(--platinum-gold); padding: 20px; border-radius: 15px; width: 220px; text-align: center;">
+            <h3>👑 PLATINUM</h3>
+            <p>(God-Mode)</p>
+        </div>
+    </div>
+
+    <section>
+        <h2>🔔 Exclusive Notifications</h2>
+        <div class="creative-tagline">
+            <strong>🌙 Sleeper Cells:</strong> "Innum thoongama phone nonditu irukiya? Free plan users-ku special '2 Legged pindam Story' queue panni vechu irukom. 10 mins-la thoonglana... auto-play dhaan! 👹"
+        </div>
+        <div class="creative-tagline">
+            <strong>⚠️ URGENT: Shield Expiring!</strong> "Unga Anti-Pei Shield iniki expiry aagudhu. Renew pannalana nalaiku night 'Oorum bloodu 10000 pei-aura va kondu adichaadu' BGM-oda oru guest varuvaanga. Ready-ah? 🏚️"
+        </div>
+    </section>
+
+    <div class="alert-red" style="font-size: 1.5em; letter-spacing: 2px;">
+        👹 Kirmaadaa Sarvanaasam Panniruven 👹
+    </div>
+
+    <section class="waitlist-section">
+        <h2>🚀 Join the Beta Waitlist</h2>
+        <p>Help us customize your security shield by detailing your trauma.</p>
+        <form id="waitlist-form">
+            <div class="form-group">
+                <label>Types of Nightmares encountered:</label>
+                <input type="text" placeholder="e.g., Flying ghosts, naked in public, exam without pen">
+            </div>
+            <div class="form-group">
+                <label>How long it felt? (Time Dilation):</label>
+                <input type="text" placeholder="e.g., Felt like years, lasted 10 mins">
+            </div>
+            <div class="form-group">
+                <label>Rate the fear (1-10):</label>
+                <input type="range" min="1" max="10" value="5">
+            </div>
+            <div class="form-group">
+                <label>Recurring or Unusual?</label>
+                <select>
+                    <option>Recurring</option>
+                    <option>Unusual/One-time</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Did an Ex intervene? (Subconscious Conflict):</label>
+                <input type="text" placeholder="Yes/No/It's complicated">
+            </div>
+            <div class="form-group">
+                <label>Stage Embarrassment Level (1-10):</label>
+                <input type="number" min="1" max="10">
+            </div>
+            <button type="button" class="action-btn" style="width: 100%;">SECURE MY REM CYCLE</button>
+        </form>
+    </section>
+
+    <section>
+        <h2>🗣️ Customer Reviews</h2>
+        <div class="review-grid">
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐⭐⭐</span><br>
+                "Life-e maaridichu! Plus plan edutha munnadi, bathroom poga bayama irukum. Ipo ellam HD-la varudhu, pei-ye ennoda fan aayidichu!"<br>
+                — Vignesh, Bangalore.
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐⭐</span><br>
+                "Basic plan is okay, but dream-la kooda office ads varudhu. Manager vandhu 'Update?' nu kekkuraru. Better to go for Platinum."<br>
+                — Priya, IT Employee.
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐⭐⭐</span><br>
+                "Na lam thoonganum nu nenacha oru second la thoonguven. Indha app vandha apro en vazhkai eh maariduchu, bathroom break eduthuttu vandha kooda climax miss aagala! Vera level technology."<br>
+                — Happy Customer (Loyalty Member)
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐⭐</span><br>
+                "Free plan-la pei ad varudhu. 30 mins-ku oru thadava jump scare kudukranunga. I'm moving to Platinum today for the Anti-Pei Shield!"<br>
+                — Scared-but-Impressed User
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐⭐⭐</span><br>
+                "Pei varala! For the first time in 24 years, I had 8 hours of uninterrupted sleep. No sudden wake-ups, no 'yaaro pakkathula irukra' feeling. My dark circles are disappearing. Platinum plan is a life-saver!"<br>
+                — Akash, Senior Overthinker
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐⭐⭐</span><br>
+                "I was skeptical about the Dream Resume feature. Enchi uccha poitu vandha dream cut aayidudhu-nu nenachen. But it actually worked! I went to the kitchen, drank water, came back, and the story started exactly where I left off. Hero kooda wait pannaaru! 🤭"<br>
+                — Sneha, Plus Plan User.
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐⭐</span><br>
+                "I forgot my renewal for just one day. That night itself, a Pei dream vandhudhu. 3 AM-ku 'Vandhanam Vala Thandhanam' BGM ketruchu. System logic is very strict! Renewed immediately from my bed. Please don't forget your renewal, guys. It's not a joke."<br>
+                — Vijay, (Now) Permanent Platinum Member.
+            </div>
+            <div class="review-card">
+                <span class="stars">⭐⭐</span><br>
+                "Free plan la 'Pei Ads' romba terror-ah iruku. 30 mins once jump scare kudukuranga. Adhu kooda paravala, bathroom poitu vandha dream-la hero maari manager vandhuraru. Upgrading to Plus tomorrow for peace of mind."<br>
+                — Karthik, IT Employee.
+            </div>
+        </div>
+    </section>
+
+    <div style="background: #0d0d0d; padding: 25px; border: 1px solid #333; margin-top: 50px; font-size: 0.9em;">
+        <h2>📜 Terms & Conditions</h2>
+        <ul>
+            <li>Failure to renew triggers the <span class="tanglish-highlight">" 👹 Kirmaadaa Sarvanaasam Panniruven 👹 "</span> BGM rolls.</li>
+            <li>The Ghost Ad Policy: Free plan users agree to be scared at least twice per REM cycle.</li>
+            <li>In the event of a bathroom break, the system will hold the frame for 5 minutes. If you don't return, the Hero will be replaced by your School Principal.</li>
+        </ul>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #555; border-top: 1px solid #222;">
+        <p>&copy; 2026 Sleeper Cells 🛌. All rights reserved.</p>
+    </footer>
+</div>
+
+<script>
+    function generateDream() {
+        const status = document.getElementById('status-text');
+        const box = document.getElementById('p-box');
+        const bar = document.getElementById('p-bar');
+        status.innerHTML = "Injecting Subconscious Data...";
+        box.style.display = 'block'; bar.style.width = '0%';
+        let width = 0;
+        const id = setInterval(() => {
+            if (width >= 100) { clearInterval(id); status.innerHTML = "✅ DREAM READY: Close eyes to begin streaming."; }
+            else { width += 2; bar.style.width = width + '%'; if(width === 40) status.innerHTML = "Enhancing Graphics to Reality-Level 8K..."; }
+        }, 50);
+    }
+
+    // Interactive Pei Counter
+    setInterval(() => {
+        const counter = document.getElementById('p-counter');
+        let val = parseInt(counter.innerText.replace(',', ''));
+        val += Math.floor(Math.random() * 5);
+        counter.innerText = val.toLocaleString();
+    }, 2000);
+</script>
+
+</body>
+</html>
